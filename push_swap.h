@@ -18,10 +18,12 @@ typedef struct s_stack
 
 typedef struct s_stack_data
 {
-    t_stack    *head;
-    int size;
+    size_t st_size;
+    char *mode;
     int min;
     int max;
-    int strategy;
+    int strat_num;
     char *mode;
+    t_list *stack_a;
 }   t_stack_data;
+
