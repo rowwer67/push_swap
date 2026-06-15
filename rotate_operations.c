@@ -6,13 +6,45 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 12:22:49 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/11 13:33:45 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/15 20:37:00 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void rotate_elements(t_stack *stack)
+#include "push_swap.h"
+
+void    rotate_elements(t_list **stack)
 {
-    if (!stack || )
+    t_list  first;
+
+    if (!stack)
+        return;
+
+    first = *stack;
+    *stack = (*stack)->next;
+
+    first->next = NULL;
+    while (s && s->next)
+		s = s->next;
+	s->next = new;
+	return ;
     
-   
-} 
+}
+
+void    ra(t_list *a)
+{
+    rotate_elements(a);
+    write(1, "ra\n", 3);
+}
+
+void    rb(t_list *b)
+{
+    rotate_elements(b);
+    write(1, "rb\n", 3);
+}
+
+void    rr(t_list *a, t_list *b)
+{
+    rotate_elements(a);
+    rotate_elements(b);
+    write(1, "rr\n", 3);
+}
