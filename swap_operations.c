@@ -35,7 +35,7 @@ void sb(t_list *b)
     write(1, "sb\n", 3);
 }
 
-void ss(t_list *a, t_stack *b)
+void ss(t_list *a, t_list *b)
 {
     swap_top_elements(a);
     swap_top_elements(b);

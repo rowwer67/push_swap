@@ -14,18 +14,19 @@
 
 void    rotate_elements(t_list **stack)
 {
-    t_list  first;
+    t_list *first;
+    t_list *last;
 
-    if (!stack)
+    if (!stack) //разобдраться с проверками
         return;
 
     first = *stack;
     *stack = (*stack)->next;
-
     first->next = NULL;
-    while (s && s->next)
-		s = s->next;
-	s->next = new;
+    last = *stack; //ВРЕМЕННО УКАЗЫВАЕТ НА ГОЛОВУ
+    while (last->next)
+		last = last->next;
+	last->next = first;
 	return ;
     
 }

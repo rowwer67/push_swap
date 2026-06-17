@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <stdlib.h>
+
 typedef struct s_list
 {
     int value;
@@ -27,3 +32,4 @@ typedef struct s_stack_data
     t_list *stack_a;
 }   t_stack_data;
 
+#endif
