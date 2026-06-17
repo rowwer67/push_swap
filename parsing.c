@@ -2,7 +2,7 @@
 
 int mode_set(char *s, t_stack_data *basis)
 {
-    if (s == "--simple")
+    if (s == "--simple")  //иф (ft_strcmp(s, "--simple") == 0) чи не 
         basis->strat_num = 1;
     else if (s == "--medium")
         basis->strat_num = 2;
