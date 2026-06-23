@@ -6,7 +6,7 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 12:22:49 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/15 20:37:00 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/23 15:52:25 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    rotate_elements(t_list **stack)
     t_list *first;
     t_list *last;
 
-    if (!stack) //разобдраться с проверками
+    if (!stack || !*stack || !(*stack)->next)
         return;
 
     first = *stack;

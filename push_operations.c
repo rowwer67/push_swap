@@ -6,7 +6,7 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 12:17:50 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/15 19:51:35 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/23 15:52:59 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void push_top_elements(t_list **src, t_list **dest)
     *dest = head;
 }
 
-void pa(t_list *a, t_list *b)
+void pa(t_list **a, t_list **b)
 {
     push_top_elements(b, a);
     write(1, "pa\n", 3);
 }
 
-void pb(t_list *a, t_list *b)
+void pb(t_list **a, t_list **b)
 {
     push_top_elements(a, b);
     write(1, "pb\n", 3);

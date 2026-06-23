@@ -15,11 +15,10 @@ typedef struct s_bench
 
 
 //operations should increase structures variable
-void op_ra(t_stack *a, t_bench *b)
+void op_ra(t_stack *a, t_bench *op_count)
 {
     rotate(a);
-    if (b)
-        b->ra++;
+    *op_count->ra++;
     write(1, "ra\n", 3);
 }
 
