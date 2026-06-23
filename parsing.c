@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int mode_set(char *s, t_stack_data *basis)
+int strategy_set(char *s, t_stack_data *basis)
 {
     if (s == "--simple")  //иф (ft_strcmp(s, "--simple") == 0) чи не 
         basis->strat_num = 1;
@@ -31,7 +31,20 @@ int no_duplicates(int new_el, t_list *lst)
     return (1);
 }
 
-// return 0 if everything parsed correctly, otherweise error numer
+//returns 1 if there is --bench setted
+int	mode_set(char *s, t_stack_data *basis)
+{
+	if (s == "--bench")
+	{
+	        *basis->mode = "bench";
+	        return (1);
+	}
+        basis->mode = "norm";
+        return (0);
+}
+
+
+// return 0 if everything parsed correctly, otherweise error number
 int    parse_it(size_t argc, char **argv, t_stack_data *basis)
 {
     size_t i;
@@ -39,14 +52,8 @@ int    parse_it(size_t argc, char **argv, t_stack_data *basis)
         
     i = 0;
     new_el = 0;
-    if (argv[i] == "--bench")
-    {
-        basis->mode = "bench";
-        i++;
-    }
-    else
-        basis->mode = "norm";
-    i = i + mode_set(argv[i], basis);
+    i = i + mode_set(argv[0], basis); 
+    i = i + strategy_set(argv[i], basis);
     if (i < argc)
         basis->st_size = argc - i; // count number of elements and put to basis->st_size
     else
@@ -55,6 +62,7 @@ int    parse_it(size_t argc, char **argv, t_stack_data *basis)
         }
     while (i < argc)
     {
+  // here sould be SPLIT and then atoi inside of it!!!     
        if (ft_atoi_mod(argv[i], &new_el))
        {
             if (no_duplicates(new_el, basis->stack_a)) //checking for duplicates

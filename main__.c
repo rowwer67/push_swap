@@ -2,12 +2,12 @@
 
 int main(int argc, char **argv)
 {
-    int a;
-	
+	int a;
 	t_stack_data *basis;
-    if (argc == 0)
-        return (0);
-    if (parse_it(argc, argv, basis))
+
+	if (argc == 0)
+	        return (0);
+	if (parse_it(argc, argv, basis))
         {
             //printing error message and abort programm
         };
