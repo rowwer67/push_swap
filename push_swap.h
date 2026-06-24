@@ -6,7 +6,7 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 11:34:17 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/23 16:53:33 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/24 15:28:13 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,20 @@ typedef struct s_stack_data
     int strat_num;
     char *mode;
     t_list *stack_a;
+    int total_ops;
 }   t_stack_data;
+
+/*
+typedef struct s_push_swap
+{
+	t_list	*stack_a;    // Голова стека А
+	t_list	*stack_b;    // Голова стека Б
+	size_t	size_a;     // Текущий размер стека А
+	size_t	size_b;     // Текущий размер стека Б
+	size_t	total_ops;  // Счетчик всех проведенных операций
+	t_strat	strategy;   // Выбранная стратегия для бенчмарка
+}	t_push_swap;
+*/
 
 typedef struct s_bench
 {
