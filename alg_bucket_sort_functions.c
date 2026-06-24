@@ -1,4 +1,6 @@
-int stack_size(t_stack *s)
+#include "push_swap.h"
+
+int stack_size(t_list *s)
 {
     int n = 0;
 
@@ -11,7 +13,7 @@ int stack_size(t_stack *s)
 }
 
 
-int find_max_pos(t_stack *b)
+int find_max_pos(t_list *b)
 {
     int pos;
     int max_pos;
@@ -35,7 +37,7 @@ int find_max_pos(t_stack *b)
 }
 
 
-void move_max_to_top_b(t_stack **b)
+void move_max_to_top_b(t_list **b)
 {
     int pos;
     int size;

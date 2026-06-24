@@ -1,4 +1,6 @@
-void insertion_sort(t_stack **a, t_stack **b)
+# include "push_swap.h"
+
+void insertion_sort(t_list **a, t_list **b)
 {
     int pos;
 

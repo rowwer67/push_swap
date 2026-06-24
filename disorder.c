@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-double calculate_disorder(t_stack *a)
+void calculate_disorder(t_list *a, t_stack_data *basis)
 {
-    t_stack *a1;
+    t_list *a1;
     int mistakes;
     int total_pairs;
 
@@ -34,5 +34,15 @@ double calculate_disorder(t_stack *a)
          }
          a = a->next;
     }
-    return ((double)mistakes / total_pairs);
+    basis->disord = (double)mistakes / total_pairs;
+    return ;
+}
+
+void set_adaptive(t_stack_data *basis)
+{
+    if (basis->disord < 0.2)
+        basis->strat_num == 1;
+    else if (basis->disord < 0.5)
+        basis->strat_num == 2;
+    else basis->strat_num == 3;
 }

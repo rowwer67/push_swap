@@ -34,17 +34,16 @@ int no_duplicates(int new_el, t_list *lst)
 
 
 //returns 1 if there is --bench setted
-
 int	mode_set(char *s, t_stack_data *basis)
 {
 	if (!s)
 		return (0);
 	if (ft_strcmp(s, "--bench") == 0)
 	{
-		basis->mode = "bench";
+		basis->mode = 1;
 		return (1);
 	}
-	basis->mode = "norm";
+	basis->mode = 0;
 	return (0);
 }
 
@@ -66,16 +65,12 @@ int    parse_it(size_t argc, char **argv, t_stack_data *basis)
     size_t i;
     int new_el;
         
-    i = 0;
+    i = 1;
     new_el = 0;
-    i = i + mode_set(argv[0], basis); //1
+    i = i + mode_set(argv[1], basis); //1 - first argument
     i = i + strategy_set(argv[i], basis);
-    if (i < argc)
-        basis->st_size = argc - i; // count number of elements and put to basis->st_size
-    else
-        {
-            //!!! we should return error (no elements in stack)
-        }
+    if (i >= argc)
+    	return (1);// we return error (1 - no elements in arguments)
     while (i < argc)
     {
   // here sould be SPLIT and then atoi inside of it!!!     
@@ -84,17 +79,14 @@ int    parse_it(size_t argc, char **argv, t_stack_data *basis)
             if (no_duplicates(new_el, basis->stack_a)) //checking for duplicates
                 ft_lstadd_back(basis->stack_a, ft_lstnew(&new_el));//writing new element new_el at the end of stack
             else
-            {// !!!!!! we schould clean here all the stack, created before and return error (duplicated elements)
-            }
+            	return (2);// we return error (2 - duplicated elements)
         }
         else
-        {// !!!!!! we schould clean here all the stack, created before and return error (incorrect element)
-			}
-        }
+			return (3);// we return error (3 - incorrect argument)
         i++;
-    
-    return (0);
 	}
+    return (0);
+}
 
 /*int	parse_and_fill(t_push_swap *app, int ac, char **av)
 {

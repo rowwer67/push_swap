@@ -27,13 +27,14 @@ typedef struct s_list
 
 typedef struct s_stack_data
 {
-    size_t st_size;
-    int min;
-    int max;
-    int strat_num;
-    char *mode;
-    t_list *stack_a;
-    int total_ops;
+    size_t st_size;	    //stack size
+   // int min;
+  //  int max;
+    double  disord;
+    int strat_num;	    //strategy (1=simple, 2=medium, 3=complex, 4=adaptive)
+    int mode;		    //mode (1 = bench and 0 = norm)
+    t_list *stack_a;	//pointer to head of stack a
+   // int total_ops;	    //??? we can count it as sum s_bench
 }   t_stack_data;
 
 /*
@@ -64,7 +65,9 @@ typedef struct s_bench
 } t_bench;
 
 
-void	sa(t_list **a);
+// CHECK THE FUNCTIONS LIST!!! A lot of incorrect functions
+
+void	sa(t_list **a);     // !!!!!! void sa(t_list *a)
 void	sb(t_list **b);
 void	ss(t_list **a, t_list **b);
 void	pa(t_list **a, t_list **b);
@@ -76,7 +79,7 @@ void	rra(t_list **a);
 void	rrb(t_list **b);
 void	rrr(t_list **a, t_list **b);
 
-int		parse_args(int argc, char **argv, t_list **a);
+int		parse_args(int argc, char **argv, t_list **a);  //???????
 void	assign_indexes(t_list *a);
 void	sort_stack(t_list **a, t_list **b);
 void	sort_three(t_list **a);

@@ -10,7 +10,7 @@ t_list	*ft_lstnew_ps(int value)
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
-	new_node->index = -1; // Индекс пока не знаем, ставим дефолтный -1
+	new_node->index = -1; // Set the defolt index -1
 	new_node->next = NULL;
 	return (new_node);
 }

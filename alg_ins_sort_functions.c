@@ -1,4 +1,7 @@
-int stack_size(t_stack *s)
+
+#include "push_swap.h"
+
+int stack_size(t_list *s)
 {
     int i;
 
@@ -11,7 +14,7 @@ int stack_size(t_stack *s)
     return (i);
 }
 
-int max_index(t_stack *b)
+int max_index(t_list *b)
 {
     int max;
     int idx;
@@ -35,7 +38,7 @@ int max_index(t_stack *b)
 }
 
 
-int min_index(t_stack *b)
+int min_index(t_list *b)
 {
     int min;
     int idx;
@@ -59,7 +62,7 @@ int min_index(t_stack *b)
 }
 
 
-int find_insert_pos_b(t_stack *b, int value)
+int find_insert_pos_b(t_list *b, int value)
 {
     int i;
     int best_pos;
@@ -87,7 +90,7 @@ int find_insert_pos_b(t_stack *b, int value)
 }
 
 
-void rotate_b_to_pos(t_stack **b, int pos)
+void rotate_b_to_pos(t_list **b, int pos)
 {
     int size;
 

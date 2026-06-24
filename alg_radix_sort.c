@@ -1,17 +1,10 @@
-typedef struct s_node
-{
-	int				value;
-	int				index;
-	struct s_node	*next;
-}	t_node;
+#include "push_swap.h"
 
 typedef struct s_stack
 {
-	t_node	*top;
+	t_list	*top;
 	int		size;
 }	t_stack;
-
-
 
 static int	get_max_bits(t_stack *a)
 {

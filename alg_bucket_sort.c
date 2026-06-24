@@ -1,11 +1,6 @@
-typedef struct s_stack
-{
-    int             value;
-    int             index;
-    struct s_stack  *next;
-}   t_stack;
+#include "push_swap.h"
 
-void bucket_sort(t_stack **a, t_stack **b)
+void bucket_sort(t_list **a, t_list **b)
 {
     int size;
     int range;

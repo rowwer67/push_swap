@@ -1,6 +1,8 @@
+#include "push_swap.h"
+
 static int	*stack_to_array(t_stack *a)
 {
-	t_node	*tmp;
+	t_list	*tmp;
 	int		*arr;
 	int		i;
 
@@ -47,7 +49,7 @@ static void	sort_array(int *arr, int size)
 
 void	assign_indexes(t_stack *a)
 {
-	t_node	*node;
+	t_list	*node;
 	int		*arr;
 	int		i;
 
