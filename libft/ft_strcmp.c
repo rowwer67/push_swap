@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-size_t	ft_strlen(const char *str);
+#include "push_swap.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

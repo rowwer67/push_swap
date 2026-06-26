@@ -2,7 +2,7 @@
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew_ps(int value)
+t_list	*ft_lstnew(int value)
 {
 	t_list	*new_node;
 

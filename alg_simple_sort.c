@@ -4,7 +4,6 @@
 // if first a_elem 
 
 //while (stack_a->content>
-
 #include "push_swap.h"
 
 static int	min_pos(t_list *a)
@@ -29,63 +28,74 @@ static int	min_pos(t_list *a)
 	return (best_pos);
 }
 
-static void	move_min_to_top(t_list **a)
+static void	move_min_to_top(t_stack_data *basis)
 {
 	int	pos;
 	int	size;
 
-	pos = min_pos(*a);
-	size = stack_size(*a);
+	pos = min_pos(basis->stack_a);
+	size = stack_size(basis->stack_a);
 	if (pos <= size / 2)
 	{
 		while (pos-- > 0)
-			ra(a);
+			ra(basis);
 	}
 	else
 	{
 		pos = size - pos;
 		while (pos-- > 0)
-			rra(a);
+			rra(basis);
 	}
 }
 
-void	sort_three(t_list **a)
+void	sort_three(t_stack_data *basis)
 {
 	int	first;
 	int	second;
 	int	third;
 
-	if (is_sorted(*a))
+	if (is_sorted(basis->stack_a))
 		return ;
-	first = (*a)->index;
-	second = (*a)->next->index;
-	third = (*a)->next->next->index;
+	first = basis->stack_a->index;
+	second = basis->stack_a->next->index;
+	third = basis->stack_a->next->next->index;
 	if (first > second && second < third && first < third)
-		sa(a);
+		sa(basis);
 	else if (first > second && second > third)
 	{
-		sa(a);
-		rra(a);
+		sa(basis);
+		rra(basis);
 	}
 	else if (first > second && second < third && first > third)
-		ra(a);
+		ra(basis);
 	else if (first < second && second > third && first < third)
 	{
-		sa(a);
-		ra(a);
+		sa(basis);
+		ra(basis);
 	}
 	else if (first < second && second > third && first > third)
-		rra(a);
+		rra(basis);
 }
 
-void	sort_five(t_list **a, t_list **b)
+void	sort_five(t_stack_data *basis)
 {
-	while (stack_size(*a) > 3)
+	while (stack_size(basis->stack_a) > 3)
 	{
-		move_min_to_top(a);
-		pb(a, b);
+		move_min_to_top(basis);
+		pb(basis);
 	}
-	sort_three(a);
-	while (*b)
-		pa(a, b);
+	sort_three(basis);
+	while (basis->stack_b)
+		pa(basis);
+}
+
+void	simple_sort(t_stack_data *basis)
+{
+	while (basis->stack_a)
+	{
+		move_min_to_top(basis);
+		pb(basis);
+	}
+	while (basis->stack_b)
+		pa(basis);
 }

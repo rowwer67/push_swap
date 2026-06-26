@@ -1,16 +1,12 @@
-
-
-
-
 #include "push_swap.h"
 
-void	reverse_rotate_elements(t_list **stack)
+static int	reverse_rotate_elements(t_list **stack)
 {
 	t_list	*prev;
 	t_list	*last;
 
 	if (!stack || !*stack || !(*stack)->next)
-		return ;
+		return (0);
 	prev = NULL;
 	last = *stack;
 	while (last->next)
@@ -21,23 +17,40 @@ void	reverse_rotate_elements(t_list **stack)
 	prev->next = NULL;
 	last->next = *stack;
 	*stack = last;
+	return (1);
 }
 
-void	rra(t_list **a)
+void	rra(t_stack_data *ps)
 {
-	reverse_rotate_elements(a);
-	write(1, "rra\n", 4);
+	if (reverse_rotate_elements(&ps->stack_a))
+	{
+		write(1, "rra\n", 4);
+		if (ps->mode == 1)
+			ps->bench.rra++;
+	}
 }
 
-void	rrb(t_list **b)
+void	rrb(t_stack_data *ps)
 {
-	reverse_rotate_elements(b);
-	write(1, "rrb\n", 4);
+	if (reverse_rotate_elements(&ps->stack_b))
+	{
+		write(1, "rrb\n", 4);
+		if (ps->mode == 1)
+			ps->bench.rrb++;
+	}
 }
 
-void	rrr(t_list **a, t_list **b)
+void	rrr(t_stack_data *ps)
 {
-	reverse_rotate_elements(a);
-	reverse_rotate_elements(b);
-	write(1, "rrr\n", 4);
+	int	done_a;
+	int	done_b;
+
+	done_a = reverse_rotate_elements(&ps->stack_a);
+	done_b = reverse_rotate_elements(&ps->stack_b);
+	if (done_a || done_b)
+	{
+		write(1, "rrr\n", 4);
+		if (ps->mode == 1)
+			ps->bench.rrr++;
+	}
 }

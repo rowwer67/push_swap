@@ -1,36 +1,22 @@
 #include "push_swap.h"
 
-void sort_stack(t_list **a, t_list **b)
-{
-    int size;
-
-    size = stack_size(*a);
-
-    if (size == 2)
-        sa(a);
-    if (size <= 3)
-        sort_three(a);
-    else if (size <= 5)
-        sort_five(a, b);
-    else if (size <= 100)
-        bucket_sort(a, b);
-    else
-        bucket_sort_500(a, b);
-}
-
-/*#include "push_swap.h"
-
-void	sort_stack(t_list **a, t_list **b)
+void sort_by_strategy(t_stack_data *basis)
 {
 	int	size;
 
-	size = stack_size(*a);
+	size = stack_size(basis->stack_a);
 	if (size == 2)
-		sa(a);
-	else if (size == 3)
-		sort_three(a);
+		sa(basis);
+	else if (size <= 3)
+		sort_three(basis);
 	else if (size <= 5)
-		sort_five(a, b);
+		sort_five(basis);
+	else if (basis->strat_num == 1)
+		simple_sort(basis);
+	else if (basis->strat_num == 2)
+		bucket_sort(basis);
+	else if (basis->strat_num == 3)
+		radix_sort(basis);
 	else
-		radix_sort(a, b);
-}*/
+		radix_sort(basis);
+}

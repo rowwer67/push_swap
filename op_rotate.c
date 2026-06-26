@@ -9,43 +9,56 @@
 /*   Updated: 2026/06/23 15:52:25 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-void    rotate_elements(t_list **stack)
+static int	rotate_elements(t_list **stack)
 {
-    t_list *first;
-    t_list *last;
+	t_list	*first;
+	t_list	*last;
 
-    if (!stack || !*stack || !(*stack)->next)
-        return;
-
-    first = *stack;
-    *stack = (*stack)->next;
-    first->next = NULL;
-    last = *stack; //ВРЕМЕННО УКАЗЫВАЕТ НА ГОЛОВУ
-    while (last->next)
+	if (!stack || !*stack || !(*stack)->next)
+		return (0);
+	first = *stack;
+	*stack = (*stack)->next;
+	first->next = NULL;
+	last = *stack;
+	while (last->next)
 		last = last->next;
 	last->next = first;
-	return ;
-    
+	return (1);
 }
 
-void    ra(t_list *a)
+void	ra(t_stack_data *ps)
 {
-    rotate_elements(a);
-    write(1, "ra\n", 3);
+	if (rotate_elements(&ps->stack_a))
+	{
+		write(1, "ra\n", 3);
+		if (ps->mode == 1)
+			ps->bench.ra++;
+	}
 }
 
-void    rb(t_list *b)
+void	rb(t_stack_data *ps)
 {
-    rotate_elements(b);
-    write(1, "rb\n", 3);
+	if (rotate_elements(&ps->stack_b))
+	{
+		write(1, "rb\n", 3);
+		if (ps->mode == 1)
+			ps->bench.rb++;
+	}
 }
 
-void    rr(t_list *a, t_list *b)
+void	rr(t_stack_data *ps)
 {
-    rotate_elements(a);
-    rotate_elements(b);
-    write(1, "rr\n", 3);
+	int	done_a;
+	int	done_b;
+
+	done_a = rotate_elements(&ps->stack_a);
+	done_b = rotate_elements(&ps->stack_b);
+	if (done_a || done_b)
+	{
+		write(1, "rr\n", 3);
+		if (ps->mode == 1)
+			ps->bench.rr++;
+	}
 }

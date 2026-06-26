@@ -1,8 +1,6 @@
 
 
 
-
-
 #include "push_swap.h"
 
 size_t	total_ops(t_bench *b)
@@ -13,57 +11,76 @@ size_t	total_ops(t_bench *b)
 		+ b->ra + b->rb + b->rr + b->rra + b->rrb + b->rrr);
 }
 
-char    *get_strategy(t_stack_data *a)
+char    *get_strategy(t_stack_data *basis)
 {
-	if (a->strat_num == 1)
+	if (basis->strat_num == 1)
 		return ("Simple");
-	if (a->strat_num == 2)
+	if (basis->strat_num == 2)
 		return ("Medium");
-	if (a->strat_num == 3)
+	if (basis->strat_num == 3)
 		return ("Complex");
-	if (a->strat_num == 4)
-		return ("Adaptive / ");
+	if (basis->strat_num == 4)
+		return ("Adaptive");
 	return ("Unknown");
 }
 
-char    *get_complexity(t_stack_data *a)
+char    *get_complexity(t_stack_data *basis)
 {
-    if (a->strat_num == 1)
+    if (basis->strat_num == 1)
 		return ("O(n²)");
-	if (a->strat_num == 2)
+	if (basis->strat_num == 2)
 		return ("O(n√n)");
-	if (a->strat_num == 3)
+	if (basis->strat_num == 3)
 		return ("O(n log n)");
-	if (a->strat_num == 4)
-    {
-        //
-    }
-		return ("");
+	if (basis->strat_num == 4)
+		return ("Adaptive");
 	return ("Unknown");
 }
 
 
-void	print_bench(t_stack_data *basis, t_bench *bench)
+void	print_bench(t_stack_data *basis)
 {
-	// Проверяем, был ли задан режим bench, если нет — ничего не выводим
-	if (!basis || ft_strcmp(basis->mode, "bench") != 0)
+	if (!basis || basis->mode == 0)
 		return ;
 
-	ft_putstr_fd("[bench] disorder: ");
-    ft_putnbr_fd(calculate_disorder(basis->stack_a, basis->st_size), 1);
-	ft_putstr_fd("%\n", 1);
+	ft_putstr_fd("[bench] disorder: ", 2);
+    ft_putnbr_fd(basis->disord, 2);
+	ft_putstr_fd("%\n", 2);
 
-	ft_putstr_fd("[bench] strategy:  ", 1);
-	ft_putstr_fd(get_strategy(basis), 1);
-	if (basis->strat_num == 4)
-		ft_putstr_fd(basis->st_size <= 5 ? "Medium" : "Complex", 1);
+	ft_putstr_fd("[bench] strategy:  ", 2);
+	ft_putstr_fd(get_strategy(basis), 2);
+	ft_putstr_fd(" / ", 2);
+	ft_putstr_fd(get_complexity(basis), 2);
+	ft_putstr_fd("\n", 2);
 
-	ft_putstr_fd(get_complexity(basis), 1);
-	if (basis->strat_num == 4)
-		ft_putstr_fd(basis->st_size <= 5 ? "O(n√n)" : "O(n log n)", 1);
-	ft_putstr_fd("\n", 1);
-	
-	ft_putstr_fd("TOTAL OPERATIONS:   ", 1);
-	ft_putnbr_fd(total_ops(bench), 1);
-	ft_putstr_fd("\n==============================================\n\n", 1);
+	ft_putstr_fd("[bench] total_ops: ", 2);
+	ft_putnbr_fd(total_ops(&basis->bench), 2);
+	ft_putstr_fd("\n", 2);
+
+	ft_putstr_fd("[bench] sa: ", 2);
+	ft_putnbr_fd(basis->bench.sa, 2);
+	ft_putstr_fd("sb: ", 2);
+	ft_putnbr_fd(basis->bench.sb, 2);
+	ft_putstr_fd("ss: ", 2);
+	ft_putnbr_fd(basis->bench.ss, 2);
+
+	ft_putstr_fd("pa: ", 2);
+	ft_putnbr_fd(basis->bench.pa, 2);
+	ft_putstr_fd("pb: ", 2);
+	ft_putnbr_fd(basis->bench.pb, 2);
+	ft_putstr_fd("\n", 2);
+
+	ft_putstr_fd("[bench] ra: ", 2);
+	ft_putnbr_fd(basis->bench.ra, 2);
+	ft_putstr_fd("rb: ", 2);
+	ft_putnbr_fd(basis->bench.rb, 2);
+	ft_putstr_fd("rr: ", 2);
+	ft_putnbr_fd(basis->bench.rr, 2);
+
+	ft_putstr_fd("rra: ", 2);
+	ft_putnbr_fd(basis->bench.rra, 2);
+	ft_putstr_fd("rrb: ", 2);
+	ft_putnbr_fd(basis->bench.rrb, 2);
+	ft_putstr_fd("rrr: ", 2);
+	ft_putnbr_fd(basis->bench.rrr, 2);
 }

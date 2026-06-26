@@ -1,20 +1,18 @@
 #include "push_swap.h"
 
-static int	*stack_to_array(t_stack *a)
+static int	*stack_to_array(t_list *a, int size)
 {
-	t_list	*tmp;
 	int		*arr;
 	int		i;
 
-	arr = malloc(sizeof(int) * a->size);
+	arr = malloc(sizeof(int) * size);
 	if (!arr)
 		return (NULL);
-	tmp = a->top;
 	i = 0;
-	while (tmp)
+	while (a)
 	{
-		arr[i++] = tmp->value;
-		tmp = tmp->next;
+		arr[i++] = a->value;
+		a = a->next;
 	}
 	return (arr);
 }
@@ -47,20 +45,26 @@ static void	sort_array(int *arr, int size)
 	}
 }
 
-void	assign_indexes(t_stack *a)
+void	assign_indexes(t_list *a)
 {
 	t_list	*node;
 	int		*arr;
 	int		i;
+	int	size;
 
-	arr = stack_to_array(a);
-	sort_array(arr, a->size);
+	size = stack_size(a);
+	arr = stack_to_array(a, size);
 
-	node = a->top;
+	if (!arr)
+		return ;
+
+	sort_array(arr, size);
+
+	node = a;
 	while (node)
 	{
 		i = 0;
-		while (i < a->size)
+		while (i < size)
 		{
 			if (arr[i] == node->value)
 			{

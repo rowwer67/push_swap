@@ -48,17 +48,6 @@ int	mode_set(char *s, t_stack_data *basis)
 }
 
 
-/*
-1)на входе только числа? (isdigit)
-
-2)числа влезают в инт (нет оверфлоу, atoi_mod?),
-
-3)создать узлы списка, положить в стэк?
-
-4)проверить дубликаты. если есть - error?
-*/
-
-
 // return 0 if everything parsed correctly, otherweise error number
 int    parse_it(size_t argc, char **argv, t_stack_data *basis)
 {
@@ -88,36 +77,102 @@ int    parse_it(size_t argc, char **argv, t_stack_data *basis)
     return (0);
 }
 
-/*int	parse_and_fill(t_push_swap *app, int ac, char **av)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+#include "push_swap.h"
+
+static int	is_strategy_flag(char *s)
 {
-	int		i;
-	int		parsed_value;
-	t_list	*new_node;
+	if (ft_strcmp(s, "--simple") == 0)
+		return (1);
+	if (ft_strcmp(s, "--medium") == 0)
+		return (1);
+	if (ft_strcmp(s, "--complex") == 0)
+		return (1);
+	if (ft_strcmp(s, "--adaptive") == 0)
+		return (1);
+	return (0);
+}
 
-	i = 1; // Начинаем с 1, так как av[0] — это имя программы
-	while (i < ac)
+static int	set_strategy(char *s, t_stack_data *ps)
+{
+	if (ft_strcmp(s, "--simple") == 0)
+		ps->strat_num = 1;
+	else if (ft_strcmp(s, "--medium") == 0)
+		ps->strat_num = 2;
+	else if (ft_strcmp(s, "--complex") == 0)
+		ps->strat_num = 3;
+	else if (ft_strcmp(s, "--adaptive") == 0)
+		ps->strat_num = 4;
+	else
+		return (0);
+	return (1);
+}
+
+static int	is_mode_flag(char *s)
+{
+	if (ft_strcmp(s, "--bench") == 0)
+		return (1);
+	return (0);
+}
+
+static int	no_duplicates(int new_el, t_list *lst)
+{
+	while (lst)
 	{
-		// 1. Проверяем isdigit (вы это уже сделали)
-		if (!is_valid_number_string(av[i]))
-			return (0); // Ошибка
-		
-		// 2. Безопасно переводим в int и проверяем границы
-		if (!safe_atoi(av[i], &parsed_value))
-			return (0); // Ошибка: число слишком большое/маленькое
+		if (lst->value == new_el)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
+}
 
-		// 3. Создаем узел и добавляем в стек
-		new_node = ft_lstnew_ps(parsed_value);
-		if (!new_node)
-			return (0); // Ошибка маллока
-		ft_lstadd_back_ps(&(app->stack_a), new_node);
-		app->size_a++; // Увеличиваем размер стека в нашей структуре
-		
+int	parse_it(int argc, char **argv, t_stack_data *ps)
+{
+	int	i;
+	int	new_el;
+	int	strategy_seen;
+
+	i = 1;
+	strategy_seen = 0;
+	while (i < argc)
+	{
+		if (is_mode_flag(argv[i]))
+			ps->mode = 1;
+		else if (is_strategy_flag(argv[i]))
+		{
+			if (strategy_seen)
+				return (1);
+			if (!set_strategy(argv[i], ps))
+				return (1);
+			strategy_seen = 1;
+		}
+		else
+		{
+			if (!ft_atoi_mod(argv[i], &new_el))
+				return (1);
+			if (!no_duplicates(new_el, ps->stack_a))
+				return (1);
+			ft_lstadd_back(&ps->stack_a, ft_lstnew(new_el));
+			ps->st_size++;
+		}
 		i++;
 	}
-	// 4. После того как весь стек собран, проверяем на дубликаты
-	if (has_duplicates(app->stack_a))
-		return (0); // Ошибка
-		
-	return (1); // Всё прошло успешно!
+	if (ps->st_size == 0)
+		return (1);
+	return (0);
 }
-*/
+	*/

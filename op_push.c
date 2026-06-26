@@ -9,38 +9,37 @@
 /*   Updated: 2026/06/23 15:52:59 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-/*
-void	ft_lstadd_front(t_list **lst, t_list *new)
+static int	push_top_elements(t_list **src, t_list **dest)
 {
-	if (lst == NULL || new == NULL)
-		return ;
-	new->next = *lst;
-	*lst = new;
-}*/
+	t_list	*head;
 
-void push_top_elements(t_list **src, t_list **dest)
-{
-    t_stack *head;
-
-    if (!src || !dest)
-        return ;
-    head = *src;
-    *src = (*src)->next;
-    head->next = *dest;
-    *dest = head;
+	if (!src || !dest || !*src)
+		return (0);
+	head = *src;
+	*src = (*src)->next;
+	head->next = *dest;
+	*dest = head;
+	return (1);
 }
 
-void pa(t_list **a, t_list **b)
+void	pa(t_stack_data *ps)
 {
-    push_top_elements(b, a);
-    write(1, "pa\n", 3);
+	if (push_top_elements(&ps->stack_b, &ps->stack_a))
+	{
+		write(1, "pa\n", 3);
+		if (ps->mode == 1)
+			ps->bench.pa++;
+	}
 }
 
-void pb(t_list **a, t_list **b)
+void	pb(t_stack_data *ps)
 {
-    push_top_elements(a, b);
-    write(1, "pb\n", 3);
+	if (push_top_elements(&ps->stack_a, &ps->stack_b))
+	{
+		write(1, "pb\n", 3);
+		if (ps->mode == 1)
+			ps->bench.pb++;
+	}
 }

@@ -1,36 +1,33 @@
 #include "push_swap.h"
 
-void bucket_sort(t_list **a, t_list **b)
+void bucket_sort(t_stack_data *basis)
 {
-    int size;
     int range;
     int i;
 
-    size = stack_size(*a);
-
-    range = 30;
+    range = get_chunk_size((int)basis->st_size);;
     i = 0;
 
-    while (*a)
+    while (basis->stack_a)
     {
-        if ((*a)->index <= i)
+        if (basis->stack_a->index <= i)
         {
-            pb(a, b);
-            rb(b);
+            pb(basis);
+            rb(basis);
             i++;
         }
-        else if ((*a)->index <= i + range)
+        else if (basis->stack_a->index <= i + range)
         {
-            pb(a, b);
+            pb(basis);
             i++;
         }
         else
-            ra(a);
+            ra(basis);
     }
 
-    while (*b)
+    while (basis->stack_b)
     {
-        move_max_to_top_b(b);
-        pa(a, b);
+        move_max_to_top_b(basis);
+        pa(basis);
     }
 }

@@ -1,7 +1,4 @@
-#include "push_swap.h"
-
-
-
+/*
 int main(int argc, char **argv)
 {
     int a;
@@ -23,4 +20,60 @@ int main(int argc, char **argv)
         set_adaptive(&basis);
         
     
+}
+*/
+
+#include "push_swap.h"
+
+static void	init_data(t_stack_data *basis)
+{
+	basis->st_size = 0;
+	basis->stack_a = NULL;
+	basis->stack_b = NULL;
+	basis->disord = 0.0;
+	basis->strat_num = 4;
+	basis->mode = 0;
+	basis->bench.sa = 0;
+	basis->bench.sb = 0;
+	basis->bench.ss = 0;
+	basis->bench.pa = 0;
+	basis->bench.pb = 0;
+	basis->bench.ra = 0;
+	basis->bench.rb = 0;
+	basis->bench.rr = 0;
+	basis->bench.rra = 0;
+	basis->bench.rrb = 0;
+	basis->bench.rrr = 0;
+}
+
+static void	error_exit(t_stack_data *basis)
+{
+	free_stack(basis->stack_a);
+	free_stack(basis->stack_b);
+	write(2, "Error\n", 6);
+	return ;
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack_data	*basis;
+
+	if (argc <= 1)
+		return (0);
+	init_data(basis);
+	if (parse_it(argc, argv, &basis) != 0)
+	{
+		error_exit(basis);
+		return (0);
+	}
+	calculate_disorder(basis);
+
+	if (basis->strat_num == 4)
+		set_adaptive(basis);
+
+	sort_by_strategy(basis);
+	print_bench(basis);
+	free_stack(basis->stack_a);
+	free_stack(basis->stack_b);
+	return (0);
 }

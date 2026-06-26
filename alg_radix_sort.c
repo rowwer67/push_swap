@@ -1,24 +1,16 @@
 #include "push_swap.h"
 
-typedef struct s_stack
-{
-	t_list	*top;
-	int		size;
-}	t_stack;
-
-static int	get_max_bits(t_stack *a)
+static int	get_max_bits(t_list *a)
 {
 	int		max;
 	int		bits;
-	t_node	*tmp;
 
 	max = 0;
-	tmp = a->top;
-	while (tmp)
+	while (a)
 	{
-		if (tmp->index > max)
-			max = tmp->index;
-		tmp = tmp->next;
+		if (a->index > max)
+			max = a->index;
+		a = a->next;
 	}
 
 	bits = 0;
@@ -28,15 +20,15 @@ static int	get_max_bits(t_stack *a)
 	return (bits);
 }
 
-void	radix_sort(t_stack *a, t_stack *b)
+void	radix_sort(t_stack_data *basis)
 {
 	int	max_bits;
 	int	i;
 	int	j;
 	int	size;
 
-	size = a->size;
-	max_bits = get_max_bits(a);
+	size = stack_size(basis->stack_a);
+	max_bits = get_max_bits(basis->stack_a);
 
 	i = 0;
 	while (i < max_bits)
@@ -44,14 +36,14 @@ void	radix_sort(t_stack *a, t_stack *b)
 		j = 0;
 		while (j < size)
 		{
-			if (((a->top->index >> i) & 1) == 1)
-				ra(a);
+			if (((basis->stack_a->index >> i) & 1) == 1)
+				ra(basis);
 			else
-				pb(a, b);
+				pb(basis);
 			j++;
 		}
-		while (b->size > 0)
-			pa(a, b);
+		while (basis->stack_b)
+			pa(basis);
 		i++;
 	}
 }

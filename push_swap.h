@@ -13,7 +13,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdlib.h>
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -24,30 +23,6 @@ typedef struct s_list
     int index;
     struct s_list  *next;
 }   t_list;
-
-typedef struct s_stack_data
-{
-    size_t st_size;	    //stack size
-   // int min;
-  //  int max;
-    double  disord;
-    int strat_num;	    //strategy (1=simple, 2=medium, 3=complex, 4=adaptive)
-    int mode;		    //mode (1 = bench and 0 = norm)
-    t_list *stack_a;	//pointer to head of stack a
-   // int total_ops;	    //??? we can count it as sum s_bench
-}   t_stack_data;
-
-/*
-typedef struct s_push_swap
-{
-	t_list	*stack_a;    // Голова стека А
-	t_list	*stack_b;    // Голова стека Б
-	size_t	size_a;     // Текущий размер стека А
-	size_t	size_b;     // Текущий размер стека Б
-	size_t	total_ops;  // Счетчик всех проведенных операций
-	t_strat	strategy;   // Выбранная стратегия для бенчмарка
-}	t_push_swap;
-*/
 
 typedef struct s_bench
 {
@@ -65,34 +40,71 @@ typedef struct s_bench
 } t_bench;
 
 
-// CHECK THE FUNCTIONS LIST!!! A lot of incorrect functions
+typedef struct s_stack_data
+{
+    size_t st_size;
+    double  disord;
+    int strat_num;	    //strategy (1=simple, 2=medium, 3=complex, 4=adaptive)
+    int mode;		    //mode (1 = bench and 0 = norm)
+    t_list *stack_a;
+    t_list *stack_b;
 
-void	sa(t_list **a);     // !!!!!! void sa(t_list *a)
-void	sb(t_list **b);
-void	ss(t_list **a, t_list **b);
-void	pa(t_list **a, t_list **b);
-void	pb(t_list **a, t_list **b);
-void	ra(t_list **a);
-void	rb(t_list **b);
-void	rr(t_list **a, t_list **b);
-void	rra(t_list **a);
-void	rrb(t_list **b);
-void	rrr(t_list **a, t_list **b);
+    t_bench bench;
 
-int		parse_args(int argc, char **argv, t_list **a);  //???????
-void	assign_indexes(t_list *a);
-void	sort_stack(t_list **a, t_list **b);
-void	sort_three(t_list **a);
-void	sort_five(t_list **a, t_list **b);
-void	radix_sort(t_list **a, t_list **b);
+}   t_stack_data;
 
+
+
+void	sa(t_stack_data *basis);
+void	sb(t_stack_data *basis);
+void	ss(t_stack_data *basis);
+void	pa(t_stack_data *basis);
+void	pb(t_stack_data *basis);
+void	ra(t_stack_data *basis);
+void	rb(t_stack_data *basis);
+void	rr(t_stack_data *basis);
+void	rra(t_stack_data *basis);
+void	rrb(t_stack_data *basis);
+void	rrr(t_stack_data *basis);
+
+/* parsing */
+int		parse_it(int argc, char **argv, t_stack_data *basis);
+
+/* list utils */
+t_list	*ft_lstnew(int value);
+void	ft_lstadd_back(t_list **lst, t_list *new_node);
+void	free_stack(t_list **stack);
 int		stack_size(t_list *s);
 int		is_sorted(t_list *a);
-int		contains_value(t_list *a, int value);
-t_list	*new_node(int value);
-void	add_back(t_list **lst, t_list *new_node);
-void	free_stack(t_list **stack);
-void	print_error(void);
+
+/* indexes */
+void	assign_indexes(t_list *a);
+
+/* disorder */
+void	calculate_disorder(t_stack_data *bsis);
+void	set_adaptive(t_stack_data *basis);
+
+/* sorting */
+void	sort_by_strategy(t_stack_data *bsis);
+void	simple_sort(t_stack_data *basis);
+void	bucket_sort(t_stack_data *basis);
+void	radix_sort(t_stack_data *basis);
+void	sort_three(t_stack_data *basis);
+void	sort_five(t_stack_data *basis);
+
+/* bucket utils */
+void	move_max_to_top_b(t_stack_data *basis);
+int		get_chunk_size(int size);
+
+/* bench */
+void	print_bench(t_stack_data *basis);
+
+/* libft */
+int		ft_atoi_mod(const char *str, int *res);
+int		ft_strcmp(const char *s1, const char *s2);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+size_t	ft_strlen(const char *str);
 
 #endif
 
