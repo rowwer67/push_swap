@@ -54,33 +54,33 @@ void	print_bench(t_stack_data *basis)
 	ft_putstr_fd("\n", 2);
 
 	ft_putstr_fd("[bench] total_ops: ", 2);
-	ft_putnbr_fd(total_ops(&basis->bench), 2);
+	ft_putnbr_fd(total_ops(basis->bench), 2);
 	ft_putstr_fd("\n", 2);
 
 	ft_putstr_fd("[bench] sa: ", 2);
-	ft_putnbr_fd(basis->bench.sa, 2);
-	ft_putstr_fd("sb: ", 2);
-	ft_putnbr_fd(basis->bench.sb, 2);
-	ft_putstr_fd("ss: ", 2);
-	ft_putnbr_fd(basis->bench.ss, 2);
+	ft_putnbr_fd(basis->bench->sa, 2);
+	ft_putstr_fd(" sb: ", 2);
+	ft_putnbr_fd(basis->bench->sb, 2);
+	ft_putstr_fd(" ss: ", 2);
+	ft_putnbr_fd(basis->bench->ss, 2);
 
-	ft_putstr_fd("pa: ", 2);
-	ft_putnbr_fd(basis->bench.pa, 2);
-	ft_putstr_fd("pb: ", 2);
-	ft_putnbr_fd(basis->bench.pb, 2);
+	ft_putstr_fd(" pa: ", 2);
+	ft_putnbr_fd(basis->bench->pa, 2);
+	ft_putstr_fd(" pb: ", 2);
+	ft_putnbr_fd(basis->bench->pb, 2);
 	ft_putstr_fd("\n", 2);
 
 	ft_putstr_fd("[bench] ra: ", 2);
-	ft_putnbr_fd(basis->bench.ra, 2);
-	ft_putstr_fd("rb: ", 2);
-	ft_putnbr_fd(basis->bench.rb, 2);
-	ft_putstr_fd("rr: ", 2);
-	ft_putnbr_fd(basis->bench.rr, 2);
+	ft_putnbr_fd(basis->bench->ra, 2);
+	ft_putstr_fd(" rb: ", 2);
+	ft_putnbr_fd(basis->bench->rb, 2);
+	ft_putstr_fd(" rr: ", 2);
+	ft_putnbr_fd(basis->bench->rr, 2);
 
-	ft_putstr_fd("rra: ", 2);
-	ft_putnbr_fd(basis->bench.rra, 2);
-	ft_putstr_fd("rrb: ", 2);
-	ft_putnbr_fd(basis->bench.rrb, 2);
-	ft_putstr_fd("rrr: ", 2);
-	ft_putnbr_fd(basis->bench.rrr, 2);
+	ft_putstr_fd(" rra: ", 2);
+	ft_putnbr_fd(basis->bench->rra, 2);
+	ft_putstr_fd(" rrb: ", 2);
+	ft_putnbr_fd(basis->bench->rrb, 2);
+	ft_putstr_fd(" rrr: ", 2);
+	ft_putnbr_fd(basis->bench->rrr, 2);
 }

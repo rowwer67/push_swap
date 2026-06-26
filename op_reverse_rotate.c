@@ -26,7 +26,7 @@ void	rra(t_stack_data *ps)
 	{
 		write(1, "rra\n", 4);
 		if (ps->mode == 1)
-			ps->bench.rra++;
+			ps->bench->rra++;
 	}
 }
 
@@ -36,7 +36,7 @@ void	rrb(t_stack_data *ps)
 	{
 		write(1, "rrb\n", 4);
 		if (ps->mode == 1)
-			ps->bench.rrb++;
+			ps->bench->rrb++;
 	}
 }
 
@@ -51,6 +51,6 @@ void	rrr(t_stack_data *ps)
 	{
 		write(1, "rrr\n", 4);
 		if (ps->mode == 1)
-			ps->bench.rrr++;
+			ps->bench->rrr++;
 	}
 }

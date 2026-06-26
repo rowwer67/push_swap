@@ -49,7 +49,7 @@ typedef struct s_stack_data
     t_list *stack_a;
     t_list *stack_b;
 
-    t_bench bench;
+    t_bench *bench;
 
 }   t_stack_data;
 

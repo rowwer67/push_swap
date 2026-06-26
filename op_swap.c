@@ -32,7 +32,7 @@ void	sa(t_stack_data *ps)
 	{
 		write(1, "sa\n", 3);
 		if (ps->mode == 1)
-			ps->bench.sa++;
+			ps->bench->sa++;
 	}
 }
 
@@ -42,7 +42,7 @@ void	sb(t_stack_data *ps)
 	{
 		write(1, "sb\n", 3);
 		if (ps->mode == 1)
-			ps->bench.sb++;
+			ps->bench->sb++;
 	}
 }
 
@@ -57,6 +57,6 @@ void	ss(t_stack_data *ps)
 	{
 		write(1, "ss\n", 3);
 		if (ps->mode == 1)
-			ps->bench.ss++;
+			ps->bench->ss++;
 	}
 }

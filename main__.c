@@ -23,6 +23,9 @@ int main(int argc, char **argv)
 }
 */
 
+
+//добавить проценты
+
 #include "push_swap.h"
 
 static void	init_data(t_stack_data *basis)
@@ -33,23 +36,23 @@ static void	init_data(t_stack_data *basis)
 	basis->disord = 0.0;
 	basis->strat_num = 4;
 	basis->mode = 0;
-	basis->bench.sa = 0;
-	basis->bench.sb = 0;
-	basis->bench.ss = 0;
-	basis->bench.pa = 0;
-	basis->bench.pb = 0;
-	basis->bench.ra = 0;
-	basis->bench.rb = 0;
-	basis->bench.rr = 0;
-	basis->bench.rra = 0;
-	basis->bench.rrb = 0;
-	basis->bench.rrr = 0;
+	basis->bench->sa = 0;
+	basis->bench->sb = 0;
+	basis->bench->ss = 0;
+	basis->bench->pa = 0;
+	basis->bench->pb = 0;
+	basis->bench->ra = 0;
+	basis->bench->rb = 0;
+	basis->bench->rr = 0;
+	basis->bench->rra = 0;
+	basis->bench->rrb = 0;
+	basis->bench->rrr = 0;
 }
 
 static void	error_exit(t_stack_data *basis)
 {
-	free_stack(basis->stack_a);
-	free_stack(basis->stack_b);
+	free_stack(&basis->stack_a);
+	free_stack(&basis->stack_b);
 	write(2, "Error\n", 6);
 	return ;
 }
@@ -57,23 +60,28 @@ static void	error_exit(t_stack_data *basis)
 int	main(int argc, char **argv)
 {
 	t_stack_data	*basis;
+	t_stack_data	nn;
+	int	err;
 
 	if (argc <= 1)
 		return (0);
+	basis = &nn;
 	init_data(basis);
-	if (parse_it(argc, argv, &basis) != 0)
+	err = parse_it(argc, argv, basis);
+	if (err !=0)
 	{
-		error_exit(basis);
+		if (err != 1)
+			error_exit(basis);
 		return (0);
 	}
 	calculate_disorder(basis);
 
 	if (basis->strat_num == 4)
 		set_adaptive(basis);
-
-	sort_by_strategy(basis);
+	if (basis->disord != 0.0)
+		sort_by_strategy(basis);
 	print_bench(basis);
-	free_stack(basis->stack_a);
-	free_stack(basis->stack_b);
+	free_stack(&basis->stack_a);
+	free_stack(&basis->stack_b);
 	return (0);
 }

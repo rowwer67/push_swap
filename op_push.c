@@ -30,7 +30,7 @@ void	pa(t_stack_data *ps)
 	{
 		write(1, "pa\n", 3);
 		if (ps->mode == 1)
-			ps->bench.pa++;
+			ps->bench->pa++;
 	}
 }
 
@@ -40,6 +40,6 @@ void	pb(t_stack_data *ps)
 	{
 		write(1, "pb\n", 3);
 		if (ps->mode == 1)
-			ps->bench.pb++;
+			ps->bench->pb++;
 	}
 }

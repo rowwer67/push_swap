@@ -49,9 +49,9 @@ int	mode_set(char *s, t_stack_data *basis)
 }
 
 // return 0 if everything parsed correctly, otherweise error number
-int    parse_it(size_t argc, char **argv, t_stack_data *basis)
+int    parse_it(int argc, char **argv, t_stack_data *basis)
 {
-    size_t i;
+    int i;
     int new_el;
         
     i = 1;
@@ -66,7 +66,7 @@ int    parse_it(size_t argc, char **argv, t_stack_data *basis)
        if (ft_atoi_mod(argv[i], &new_el))
        {
             if (no_duplicates(new_el, basis->stack_a)) //checking for duplicates
-                ft_lstadd_back(basis->stack_a, ft_lstnew(&new_el));//writing new element new_el at the end of stack
+                ft_lstadd_back(&basis->stack_a, ft_lstnew(new_el));//writing new element new_el at the end of stack
             else
             	return (2);// we return error (2 - duplicated elements)
         }
