@@ -6,14 +6,14 @@
 #    By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/21 13:45:55 by abrezden          #+#    #+#              #
-#    Updated: 2026/06/24 13:55:43 by abrezden         ###   ########.fr        #
+#    Updated: 2026/06/26 13:47:05 by abrezden         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -g -Wall -Wextra -Werror -I.
 
 SRCS = main__.c \
 	parsing.c \

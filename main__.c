@@ -30,6 +30,8 @@ int main(int argc, char **argv)
 
 static void	init_data(t_stack_data *basis)
 {
+	
+
 	basis->st_size = 0;
 	basis->stack_a = NULL;
 	basis->stack_b = NULL;
@@ -61,11 +63,13 @@ int	main(int argc, char **argv)
 {
 	t_stack_data	*basis;
 	t_stack_data	nn;
+	t_bench 	bench;
 	int	err;
 
 	if (argc <= 1)
 		return (0);
 	basis = &nn;
+	basis->bench = &bench;
 	init_data(basis);
 	err = parse_it(argc, argv, basis);
 	if (err !=0)
