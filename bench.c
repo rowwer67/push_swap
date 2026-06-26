@@ -44,7 +44,7 @@ void	print_bench(t_stack_data *basis)
 		return ;
 
 	ft_putstr_fd("[bench] disorder: ", 2);
-    ft_putnbr_fd(basis->disord, 2);
+    disorder_percentage(basis->disord);
 	ft_putstr_fd("%\n", 2);
 
 	ft_putstr_fd("[bench] strategy:  ", 2);
@@ -83,4 +83,5 @@ void	print_bench(t_stack_data *basis)
 	ft_putnbr_fd(basis->bench->rrb, 2);
 	ft_putstr_fd(" rrr: ", 2);
 	ft_putnbr_fd(basis->bench->rrr, 2);
+	ft_putstr_fd("\n", 2);
 }

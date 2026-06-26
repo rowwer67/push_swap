@@ -83,6 +83,7 @@ void	assign_indexes(t_list *a);
 /* disorder */
 void	calculate_disorder(t_stack_data *bsis);
 void	set_adaptive(t_stack_data *basis);
+void	disorder_percentage(double dis);
 
 /* sorting */
 void	sort_by_strategy(t_stack_data *bsis);
@@ -105,6 +106,9 @@ int		ft_strcmp(const char *s1, const char *s2);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 size_t	ft_strlen(const char *str);
+
+void	init_data(t_stack_data *basis);
+void	error_exit(t_stack_data *basis);
 
 #endif
 

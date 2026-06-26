@@ -13,7 +13,7 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror -I.
 
 SRCS = main__.c \
 	parsing.c \

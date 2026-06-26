@@ -1,6 +1,6 @@
 
-
 #include "push_swap.h"
+
 //deleting spaces (actually, counts) at the begining of the string
 static int	del_spaces(const char *str)
 {

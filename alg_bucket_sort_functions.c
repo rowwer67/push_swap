@@ -1,19 +1,5 @@
 #include "push_swap.h"
 
-/*
-int stack_size(t_list *s)
-{
-    int n = 0;
-
-    while (s)
-    {
-        n++;
-        s = s->next;
-    }
-    return (n);
-}*/
-
-
 int find_max_pos(t_list *b)
 {
     int pos;

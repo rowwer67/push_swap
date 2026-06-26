@@ -51,3 +51,21 @@ void set_adaptive(t_stack_data *basis)
         basis->strat_num = 2;
     else basis->strat_num = 3;
 }
+
+
+
+void    disorder_percentage(double dis)
+{
+    int okr;
+    int first;
+    int sec;
+
+    okr = dis * 10000;
+    first = okr / 100;
+    sec = okr % 100;
+    ft_putnbr_fd(first, 2);
+    write(2, ".", 1);
+    if (sec < 10)
+        write(2, "0", 1);
+    ft_putnbr_fd(sec, 2);
+}
