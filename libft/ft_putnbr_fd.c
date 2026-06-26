@@ -6,9 +6,10 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 13:19:15 by abrezden          #+#    #+#             */
-/*   Updated: 2026/05/11 15:02:54 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/26 16:44:59 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_putnbr_fd(int n, int fd)

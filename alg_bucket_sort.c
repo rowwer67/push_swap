@@ -1,33 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   alg_bucket_sort.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/26 16:51:25 by abrezden          #+#    #+#             */
+/*   Updated: 2026/06/26 17:51:00 by abrezden         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void bucket_sort(t_stack_data *basis)
+void	bucket_sort(t_stack_data *basis)
 {
-    int range;
-    int i;
+	int	range;
+	int	i;
 
-    range = get_chunk_size((int)basis->st_size);;
-    i = 0;
-
-    while (basis->stack_a)
-    {
-        if (basis->stack_a->index <= i)
-        {
-            pb(basis);
-            rb(basis);
-            i++;
-        }
-        else if (basis->stack_a->index <= i + range)
-        {
-            pb(basis);
-            i++;
-        }
-        else
-            ra(basis);
-    }
-
-    while (basis->stack_b)
-    {
-        move_max_to_top_b(basis);
-        pa(basis);
-    }
+	range = get_chunk_size((int)basis->st_size);
+	i = 0;
+	while (basis->stack_a)
+	{
+		if (basis->stack_a->index <= i)
+		{
+			pb(basis);
+			rb(basis);
+			i++;
+		}
+		else if (basis->stack_a->index <= i + range)
+			(void)(pb(basis), i++);
+		else
+			ra(basis);
+	}
+	while (basis->stack_b)
+	{
+		move_max_to_top_b(basis);
+		pa(basis);
+	}
 }

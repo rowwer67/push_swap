@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-/*int	main()
+/*int	main(void)
 {
 	char str[] = "bambam";
 	printf("%d", ft_strlen(str));

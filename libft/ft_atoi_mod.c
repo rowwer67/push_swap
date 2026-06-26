@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_mod.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/26 16:43:47 by abrezden          #+#    #+#             */
+/*   Updated: 2026/06/26 16:44:36 by abrezden         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-//deleting spaces (actually, counts) at the begining of the string
 static int	del_spaces(const char *str)
 {
 	int	i;
@@ -12,10 +22,9 @@ static int	del_spaces(const char *str)
 	return (i);
 }
 
-//checking if the number between INT_MIN and INT_MAX (returns 1 if yes and 0 otherwise)
-static int not_overflow(int res, char s, int zn)
+static int	not_overflow(int res, char s, int zn)
 {
-	long a;
+	long	a;
 
 	a = ((long)res * 10 + (s - 48)) * zn;
 	if (a > 2147483647 || a < -2147483648)
@@ -23,18 +32,17 @@ static int not_overflow(int res, char s, int zn)
 	return (1);
 }
 
-//returns 1 if string is correctly converted to int and 0 otherwise
 int	ft_atoi_mod(const char *str, int *res)
 {
-	int			i;
-	int			zn;
+	int	i;
+	int	zn;
 
 	zn = 1;
 	*res = 0;
 	i = del_spaces(str);
 	if (str[i] == '-' || str[i] == '+')
 	{
-        if (str[i] == '-')
+		if (str[i] == '-')
 			zn = -1 * zn;
 		i++;
 	}

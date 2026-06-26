@@ -21,7 +21,7 @@ int	ft_isdigit(int c)
 	return (0);
 }
 /*
-int main()
+int	main(void)
 {
 	char c = '4';
 	printf("%d\n", ft_isdigit(c));

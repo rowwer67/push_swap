@@ -6,66 +6,62 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 17:15:32 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/11 19:12:14 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/26 17:19:52 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void calculate_disorder(t_stack_data *basis)
+void	calculate_disorder(t_stack_data *basis)
 {
-    t_list *a1;
-    t_list *a2;
-    int mistakes;
-    int total_pairs;
+	t_list	*a1;
+	t_list	*a2;
+	int		mistakes;
+	int		total_pairs;
 
-    if (!basis || !basis->stack_a || !basis->stack_a->next )
-    {
-		basis->disord = 0.0;
-		return ;
+	if (!basis || !basis->stack_a || !basis->stack_a->next)
+		return ((void)(basis->disord = 0.0));
+	mistakes = 0;
+	total_pairs = 0;
+	a1 = basis->stack_a;
+	while (a1)
+	{
+		a2 = a1->next;
+		while (a2)
+		{
+			total_pairs += 1;
+			if (a1->value > a2->value)
+				mistakes += 1;
+			a2 = a2->next;
+		}
+		a1 = a1->next;
 	}
-    mistakes = 0;
-    total_pairs = 0;
-    a1 = basis->stack_a;
-    while (a1)
-    {
-        a2 = a1->next;
-        while (a2)
-        {
-            total_pairs += 1;
-            if (a1->value > a2->value)
-                mistakes += 1;
-            a2 = a2->next;
-         }
-         a1 = a1->next;
-    }
-    basis->disord = (double)mistakes / total_pairs;
-    return ;
+	basis->disord = (double)mistakes / total_pairs;
+	return ;
 }
 
-void set_adaptive(t_stack_data *basis)
+void	set_adaptive(t_stack_data *basis)
 {
-    if (basis->disord < 0.2)
-        basis->strat_num = 1;
-    else if (basis->disord < 0.5)
-        basis->strat_num = 2;
-    else basis->strat_num = 3;
+	if (basis->disord < 0.2)
+		basis->strat_num = 1;
+	else if (basis->disord < 0.5)
+		basis->strat_num = 2;
+	else
+		basis->strat_num = 3;
 }
 
-
-
-void    disorder_percentage(double dis)
+void	disorder_percentage(double dis)
 {
-    int okr;
-    int first;
-    int sec;
+	int	okr;
+	int	first;
+	int	sec;
 
-    okr = dis * 10000;
-    first = okr / 100;
-    sec = okr % 100;
-    ft_putnbr_fd(first, 2);
-    write(2, ".", 1);
-    if (sec < 10)
-        write(2, "0", 1);
-    ft_putnbr_fd(sec, 2);
+	okr = dis * 10000;
+	first = okr / 100;
+	sec = okr % 100;
+	ft_putnbr_fd(first, 2);
+	write(2, ".", 1);
+	if (sec < 10)
+		write(2, "0", 1);
+	ft_putnbr_fd(sec, 2);
 }

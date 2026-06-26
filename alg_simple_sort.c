@@ -1,9 +1,15 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   alg_simple_sort.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/26 17:02:07 by abrezden          #+#    #+#             */
+/*   Updated: 2026/06/26 17:02:16 by abrezden         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// if stack b is empty - pa
-// if first a_elem 
-
-//while (stack_a->content>
 #include "push_swap.h"
 
 static int	min_pos(t_list *a)

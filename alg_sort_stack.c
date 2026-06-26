@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   alg_sort_stack.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/26 17:02:23 by abrezden          #+#    #+#             */
+/*   Updated: 2026/06/26 17:05:52 by abrezden         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void sort_by_strategy(t_stack_data *basis)
+void	sort_by_strategy(t_stack_data *basis)
 {
 	int	size;
 
