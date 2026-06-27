@@ -73,6 +73,7 @@ int	parse_it(int argc, char **argv, t_stack_data *basis)
 		{
 			if (no_duplicates(new_el, basis->stack_a))
 				ft_lstadd_back(&basis->stack_a, ft_lstnew(new_el));
+				basis->st_size++;
 			else
 				return (2);
 		}

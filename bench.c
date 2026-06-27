@@ -63,7 +63,8 @@ void	print_bench(t_stack_data *basis)
 	ft_putstr_fd(get_strategy(basis), 2);
 	ft_putstr_fd(" / ", 2);
 	ft_putstr_fd(get_complexity(basis), 2);
-	ft_putstr_fd("\n[bench] total_ops: ", total_ops(basis->bench));
+	ft_putstr_fd("\n[bench] total_ops: ", 2);
+	ft_putnbr_fd((int)total_ops(basis->bench), 2);
 	print_b("\n[bench] sa: ", basis->bench->sa);
 	print_b(" sb: ", basis->bench->sb);
 	print_b(" ss: ", basis->bench->ss);
