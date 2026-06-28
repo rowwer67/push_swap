@@ -275,33 +275,32 @@ libft/                       Local helper functions
 * Project structure and Makefile setup.
 * Stack data structure and stack utility functions.
 * Push_swap operation implementation.
-* Error handling and cleanup flow.
 * Simple sorting strategy and small-input sorting.
 * Benchmark counter integration into operation functions.
+* Disorder metric and adaptive strategy selection.
 
 ### oshevche
 
-* Argument parsing, split handling, strategy flags, and benchmark flag handling.
+* Argument parsing, strategy flags, and benchmark flag handling.
 * Duplicate checks and integer range validation.
-* Disorder metric and adaptive strategy selection.
 * Chunk / bucket sorting implementation.
 * Radix sorting and index compression.
 * README documentation and checklist review.
+* Error handling and cleanup flow.
 
 Both learners understand and can explain the full codebase, including parsing, memory management, operations, benchmark mode, and all sorting strategies.
 
 ## Resources
 
 * 42 push_swap subject.
-* 42 push_swap evaluation scale.
 * 42 Norm / Norminette rules.
-* C manual pages: `malloc`, `free`, `write`, `exit`.
+* C manual pages.
 * Big-O notation references.
 * Sorting algorithm references: selection sort, bucket sorting, radix sort.
 * Local testing with the official 42 checker.
 
 ### AI usage
 
-AI assistance was used for README structure, wording cleanup, checklist review, and explanation of algorithm complexity.
+AI assistance was used for README structure, explanation of algorithm complexity.
 
-AI was not used as a final source of truth. All code, tests, benchmark output, and algorithm behavior were reviewed and verified by the learners.
+AI was not used as a final source of truth. All code, tests, benchmark output, and algorithm behavior were reviewed and verified by us.

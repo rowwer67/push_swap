@@ -6,7 +6,7 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 16:47:17 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/26 16:47:17 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/28 14:33:42 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	init_data(t_stack_data *basis)
 	basis->stack_a = NULL;
 	basis->stack_b = NULL;
 	basis->disord = 0.0;
-	basis->strat_num = 4;
+	basis->strat_num = 0;
 	basis->mode = 0;
 	basis->bench->sa = 0;
 	basis->bench->sb = 0;

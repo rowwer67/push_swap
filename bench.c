@@ -6,7 +6,7 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 17:02:32 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/26 18:13:53 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/28 14:06:41 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,5 @@ void	print_bench(t_stack_data *basis)
 	print_b(" rrb: ", basis->bench->rrb);
 	print_b(" rrr: ", basis->bench->rrr);
 	ft_putstr_fd("\n", 2);
+	return ;
 }

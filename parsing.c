@@ -6,7 +6,7 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 17:03:38 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/26 17:04:27 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/28 14:56:58 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	strategy_set(char *s, t_stack_data *basis)
 		basis->strat_num = 4;
 	else
 	{
-		basis->strat_num = 4;
 		return (0);
 	}
 	return (1);
@@ -52,8 +51,6 @@ int	mode_set(char *s, t_stack_data *basis)
 		basis->mode = 1;
 		return (1);
 	}
-	basis->mode = 0;
-	return (0);
 }
 
 static int	add_number(t_stack_data *basis, int new_el)
@@ -70,6 +67,16 @@ static int	add_number(t_stack_data *basis, int new_el)
 	return (0);
 }
 
+int flags_set(int argc, char **argv, t_stack_data *basis)
+{
+	int a;
+
+	a = 1;
+	while (a < argc && (mode_set(argv[a], basis) || strategy_set(argv[a], basis)))
+		a++;
+	return (a);
+}
+
 int	parse_it(int argc, char **argv, t_stack_data *basis)
 {
 	int	i;
@@ -80,9 +87,10 @@ int	parse_it(int argc, char **argv, t_stack_data *basis)
 		return (1);
 	i = 1;
 	new_el = 0;
-	i = i + mode_set(argv[i], basis);
-	if (i < argc)
-		i = i + strategy_set(argv[i], basis);
+	i = flags_set(argc, argv, basis);
+//	i = i + mode_set(argv[i], basis);
+//	if (i < argc)
+//		i = i + strategy_set(argv[i], basis);
 	if (i >= argc)
 		return (1);
 	while (i < argc)
