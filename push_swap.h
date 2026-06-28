@@ -6,7 +6,7 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 11:34:17 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/26 17:48:02 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/28 15:20:35 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void				rrr(t_stack_data *basis);
 
 /* parsing */
 int					parse_it(int argc, char **argv, t_stack_data *basis);
+int					add_number(t_stack_data *basis, int new_el);
+int					flags_set(int argc, char **argv, t_stack_data *basis);
 
 /* list utils */
 t_list				*ft_lstnew(int value);

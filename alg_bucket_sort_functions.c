@@ -6,7 +6,7 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 16:51:05 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/26 17:08:32 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/28 15:24:29 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ void	move_max_to_top_b(t_stack_data *basis)
 
 int	get_chunk_size(int size)
 {
-	if (size <= 100)
-		return (size / 5);
-	return (size / 11);
+	int	a;
+
+	a = 1;
+	while ((a * a) < size)
+		a++;
+	return (a);
 }

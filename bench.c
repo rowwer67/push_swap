@@ -6,7 +6,7 @@
 /*   By: abrezden <abrezden@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 17:02:32 by abrezden          #+#    #+#             */
-/*   Updated: 2026/06/28 14:06:41 by abrezden         ###   ########.fr       */
+/*   Updated: 2026/06/28 15:35:15 by abrezden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_strategy(t_stack_data *basis)
 		return ("Complex");
 	if (basis->strat_num == 4)
 		return ("Adaptive");
-	return ("Unknown");
+	return ("Adaptive");
 }
 
 char	*get_complexity(t_stack_data *basis)
@@ -43,7 +43,7 @@ char	*get_complexity(t_stack_data *basis)
 		return ("O(n log n)");
 	if (basis->strat_num == 4)
 		return ("Adaptive");
-	return ("Unknown");
+	return ("Adaptive");
 }
 
 void	print_b(char *str, int nbr)
